@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>Fraud Protect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>body{min-width:260px}</style>
+  <script defer src="popup.js"></script>
+  </head>
+<body>
+  <h1>Fraud Protect</h1>
+  <label><input type="checkbox" id="enabled" /> Aktiv</label>
+  <div class="grid">
+    <label>Gelb <input id="warn" type="number" step="0.01" min="0" max="5"/></label>
+    <label>Rot <input id="fraud" type="number" step="0.01" min="0" max="5"/></label>
+    <label>Lila <input id="high" type="number" step="0.01" min="0" max="5"/></label>
+  </div>
+  <button id="save">Speichern</button>
+</body>
+</html>
+

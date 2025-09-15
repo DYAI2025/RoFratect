@@ -1,0 +1,13 @@
+{
+  "id": "SEM_PLATFORM_SWITCH_WHATSAPP",
+  "category": "SEM",
+  "weight": 1.3,
+  "window": { "messages": 6 },
+  "activation": { "rule": "ANY", "count": 1 },
+  "patterns": [
+    "(?i)\\bwhats\\s*app\\b",
+    "(?i)\\b(add|hinzuf(ü|u)gen|kontakt)\\b.{0,40}\\bwhats\\s*app\\b",
+    "(?i)\\+?\\d{8,15}"
+  ]
+}
+

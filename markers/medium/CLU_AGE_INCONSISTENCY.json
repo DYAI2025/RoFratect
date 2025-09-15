@@ -1,0 +1,9 @@
+{
+  "id": "CLU_AGE_INCONSISTENCY",
+  "category": "CLU",
+  "weight": 1.0,
+  "window": { "messages": 30 },
+  "activation": { "rule": "ANY", "count": 1 },
+  "collect": { "regex": "(?i)\\b(i('| a)?m|ich bin)(?: dieses jahr)?\\s*(\\d{2})\\b", "field": 3, "aggregate": "distinct_numbers", "min_distinct": 2 }
+}
+

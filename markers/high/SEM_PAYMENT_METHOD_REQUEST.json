@@ -1,0 +1,13 @@
+{
+  "id": "SEM_PAYMENT_METHOD_REQUEST",
+  "category": "SEM",
+  "weight": 1.5,
+  "window": { "messages": 8 },
+  "activation": { "rule": "ANY", "count": 1 },
+  "patterns": [
+    "(?i)\\b(apple|steam|gift) card[s]?\\b",
+    "(?i)\\b(usdt|btc|crypto (only|preferred))\\b",
+    "(?i)\\b(western union|moneygram|wire)\\b"
+  ]
+}
+

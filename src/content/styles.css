@@ -1,0 +1,28 @@
+#__fp_overlay {
+  position: fixed;
+  right: 16px; bottom: 16px;
+  z-index: 2147483647;
+  display: grid;
+  gap: 8px;
+  padding: 10px 12px;
+  background: color-mix(in srgb, Canvas 92%, #000 8%);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.22);
+  font: 13px/1.35 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+#__fp_overlay .fp-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: #fff; padding: 6px 10px; border-radius: 8px;
+  font-weight: 700; letter-spacing: .2px;
+}
+#__fp_overlay .fp-hints { max-width: 320px; color: CanvasText; opacity: .9; }
+#__fp_overlay .fp-actions { display: flex; gap: 6px; }
+#__fp_overlay button {
+  border: 0; padding: 6px 10px; border-radius: 8px; cursor: pointer;
+  background: color-mix(in srgb, ButtonFace 85%, #000 15%);
+}
+@media (prefers-color-scheme: dark) {
+  #__fp_overlay { background: color-mix(in srgb, #111 85%, #fff 15%); }
+}
+

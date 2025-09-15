@@ -1,0 +1,12 @@
+{
+  "id": "ATO_WEBCAM_PHRASE",
+  "category": "ATO",
+  "weight": 1.2,
+  "window": { "messages": 6 },
+  "activation": { "rule": "ANY", "count": 1 },
+  "patterns": [
+    "(?i)\\b(video|webcam|call)\\b",
+    "(?i)\\bcan('|no)t (video|call)|camera (ban|forbidden)\\b"
+  ]
+}
+

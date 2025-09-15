@@ -1,0 +1,12 @@
+{
+  "id": "SEM_INVESTMENT_PIVOT",
+  "category": "SEM",
+  "weight": 1.5,
+  "window": { "messages": 8 },
+  "activation": { "rule": "ANY", "count": 1 },
+  "patterns": [
+    "(?i)\\b(invest(ing|ment)|profit|high yield|return)\\b",
+    "(?i)\\b(coach|mentor|guide)\\b.{0,40}\\b(trade|trading|signals?)\\b"
+  ]
+}
+
