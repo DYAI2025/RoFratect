@@ -1,0 +1,12 @@
+{
+  "name": "rofratect",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:integration": "node tests/integration/run-puppeteer-snapshots.mjs"
+  },
+  "devDependencies": {
+    "puppeteer": "^22.10.0"
+  }
+}

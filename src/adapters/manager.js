@@ -19,6 +19,9 @@ export const AdapterManager = {
   },
   threadId(adapter){
     try { return adapter.threadId?.(document); } catch { return undefined; }
+  },
+  diagnostics(adapter){
+    try { return adapter.getDiagnostics?.(); } catch { return undefined; }
   }
 };
 
