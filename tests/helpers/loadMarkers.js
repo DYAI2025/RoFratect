@@ -13,7 +13,12 @@ export function loadMarkersById(ids) {
       if (statSync(full).isDirectory()) {
         scan(full);
       } else if (entry.endsWith(".json") && entry !== "registry.json") {
-        const obj = JSON.parse(readFileSync(full, "utf8"));
+        let obj;
+        try {
+          obj = JSON.parse(readFileSync(full, "utf8"));
+        } catch (err) {
+          throw new Error(`Failed to parse JSON in marker file: ${full}\n${err.message}`);
+        }
         if (want.has(obj.id)) found.push(obj);
       }
     }
