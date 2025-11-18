@@ -12,9 +12,17 @@ async function init() {
   engine = new ScoringEngine({ registry, markers });
   adapter = AdapterManager.choose();
 
+  let initialized = false;
   chrome.storage.local.get(["fp_settings"], ({ fp_settings }) => {
+    initialized = true;
     applySettings(fp_settings);
   });
+  // Fallback if storage doesn't respond
+  setTimeout(() => {
+    if (!initialized) {
+      applySettings();
+    }
+  }, 100);
 
   chrome.storage.onChanged.addListener(handleSettingsChange);
   window.addEventListener("beforeunload", cleanup);
