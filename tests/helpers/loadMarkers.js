@@ -20,5 +20,12 @@ export function loadMarkersById(ids) {
   };
 
   scan(root);
+  const foundIds = new Set(found.map(obj => obj.id));
+  const missing = [...want].filter(id => !foundIds.has(id));
+  if (missing.length > 0) {
+    throw new Error(
+      `loadMarkersById: The following marker IDs were requested but not found: ${missing.join(", ")}`
+    );
+  }
   return found;
 }
