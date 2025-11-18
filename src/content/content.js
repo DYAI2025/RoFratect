@@ -67,7 +67,7 @@ function cleanup() {
 }
 
 function runScan() {
-  if (!settings?.enabled) return;
+  if (!settings.enabled) return;
 
   const msgs = AdapterManager.scan(adapter);
   if (!msgs || msgs.length === 0) return;
