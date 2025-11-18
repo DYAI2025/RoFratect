@@ -18,18 +18,22 @@ async function init() {
 }
 
 function runScan() {
+  if (!settings.enabled) return;
+
   const msgs = AdapterManager.scan(adapter);
   if (!msgs || msgs.length === 0) return;
 
   const res = engine.score(msgs);
-  chrome.storage.local.get(["fp_settings"], ({ fp_settings }) => {
-    const s = fp_settings || {};
-    const th = s.thresholds || registry.thresholds;
-    const level = classifyFromThresholds(res.S, res.killer, th);
-    paintOverlay(level, res.S, res.hits);
-    const tid = AdapterManager.threadId(adapter) || location.href;
-    chrome.storage.local.set({ ["fp_state_"+tid]: { level, score: res.S, hits: res.hits, t: Date.now() } });
-  });
+  const th = settings.thresholds || registry.thresholds;
+  const level = classifyFromThresholds(res.S, res.killer, th);
+  paintOverlay(level, res.S, res.hits);
+  const tid = AdapterManager.threadId(adapter) || location.href;
+  chrome.storage.local.set({ ["fp_state_"+tid]: { level, score: res.S, hits: res.hits, t: Date.now() } });
+}
+
+function teardownOverlay() {
+  const el = document.getElementById("__fp_overlay");
+  if (el) el.remove();
 }
 
 init();
