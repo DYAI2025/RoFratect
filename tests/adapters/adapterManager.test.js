@@ -1,15 +1,25 @@
-import { describe, it, beforeEach } from "node:test";
+import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { AdapterManager } from "../../src/adapters/manager.js";
 import { WhatsAppAdapter } from "../../src/adapters/whatsapp.js";
 import { GenericAdapter } from "../../src/adapters/generic.js";
 
 describe("AdapterManager", () => {
+  let originalWindow, originalDocument, originalLocation;
   beforeEach(() => {
+    // Save original globals
+    originalWindow = global.window;
+    originalDocument = global.document;
+    originalLocation = global.location;
     const body = { innerHTML: "" };
     global.window = { document: { body } };
     global.document = window.document;
     global.location = { host: "example.com", href: "https://example.com/", pathname: "/" };
+  });
+  afterEach(() => {
+    global.window = originalWindow;
+    global.document = originalDocument;
+    global.location = originalLocation;
   });
 
   it("selects the WhatsApp adapter when the host matches", () => {
