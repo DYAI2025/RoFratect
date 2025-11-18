@@ -9,12 +9,24 @@ async function fetchJson(url) {
 }
 
 function manifestEntries(registry) {
-  const manifest =
-    registry.marker_sources ||
-    registry.markerSources ||
-    registry.markerManifest ||
-    registry.markers;
-
+  const propertyNames = [
+    "marker_sources",
+    "markerSources",
+    "markerManifest",
+    "markers"
+  ];
+  let manifest;
+  let usedProperty;
+  for (const name of propertyNames) {
+    if (registry[name]) {
+      manifest = registry[name];
+      usedProperty = name;
+      break;
+    }
+  }
+  if (usedProperty) {
+    console.debug(`[RoFratect] Using manifest property "${usedProperty}" from registry.`);
+  }
   if (!manifest || typeof manifest !== "object") return [];
   return Object.entries(manifest);
 }
