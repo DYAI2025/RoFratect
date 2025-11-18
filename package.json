@@ -1,11 +1,12 @@
 {
   "name": "rofratect",
   "version": "1.0.0",
-  "description": "Tooling for linting, testing, and packaging the RoFratect extension.",
+  "private": true,
   "type": "module",
   "scripts": {
-    "lint": "node scripts/lint.mjs",
-    "test": "node --test",
-    "build": "node scripts/build.mjs"
+    "test:integration": "node tests/integration/run-puppeteer-snapshots.mjs"
+  },
+  "devDependencies": {
+    "puppeteer": "^22.10.0"
   }
 }

@@ -1,0 +1,15 @@
+{
+  "host": "web.whatsapp.com",
+  "row": "[data-testid=\"conversation-panel\"] [role=\"row\"]",
+  "text": "[data-testid=\"msg-container\"]",
+  "mineFlag": "[data-testid=\"msg-out\"]",
+  "idAttr": "data-id",
+  "time": "time@datetime",
+  "threadId": "pathname",
+  "heuristics": {
+    "minRows": 1,
+    "maxEmptyCycles": 2,
+    "minSpeakersLabeled": 1,
+    "speakerSampleSize": 2
+  }
+}
