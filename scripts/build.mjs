@@ -29,6 +29,6 @@ for (const [srcRel, destRel] of assets) {
 
 const zipName = "rofratect.zip";
 const zipPath = join(outDir, zipName);
-execSync(`cd ${outDir} && zip -r ${zipName} .`, { stdio: "inherit" });
+execSync(`zip -r ${zipName} .`, { cwd: outDir, stdio: "inherit" });
 
 console.log(`\nCreated ${zipPath}`);
