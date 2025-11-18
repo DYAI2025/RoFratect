@@ -1,4 +1,4 @@
-const normalizePattern = s => s.replace(/\(\?i\)/gi, "");
+const normalizePattern = s => s.replace(/^\(\?[imsx]+\)/gi, "");
 const re = s => new RegExp(normalizePattern(s), "i");
 
 export class ScoringEngine {
