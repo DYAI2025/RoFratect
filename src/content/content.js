@@ -4,66 +4,17 @@ import { AdapterManager } from "../adapters/manager.js";
 import { paintOverlay, classifyFromThresholds } from "./ui-overlay.js";
 
 let engine, registry, adapter, unsubscribe;
-let settings = { enabled: true };
+const runScanThrottled = throttle(() => runScan(), 350);
 
 async function init() {
-  const { registry: loadedRegistry, markers } = await loadRegistry();
-  registry = loadedRegistry;
-  engine = new ScoringEngine({ registry, markers });
+  const payload = await loadRegistry();
+  registry = payload.registry;
+  engine = new ScoringEngine(payload);
+
   adapter = AdapterManager.choose();
-
-  let initialized = false;
-  chrome.storage.local.get(["fp_settings"], ({ fp_settings }) => {
-    initialized = true;
-    applySettings(fp_settings);
-  });
-  // Fallback if storage doesn't respond
-  setTimeout(() => {
-    if (!initialized) {
-      applySettings();
-    }
-  }, 100);
-
-  chrome.storage.onChanged.addListener(handleSettingsChange);
-  window.addEventListener("beforeunload", cleanup);
-}
-
-function handleSettingsChange(changes, area) {
-  if (area !== "local" || !changes.fp_settings) return;
-  applySettings(changes.fp_settings.newValue);
-}
-
-function applySettings(fpSettings = {}) {
-  settings = {
-    enabled: fpSettings.enabled ?? true,
-    thresholds: fpSettings.thresholds || registry.thresholds
-  };
-
-  if (!settings.enabled) {
-    stopWatching();
-    teardownOverlay();
-    return;
-  }
-
-  startWatching();
-}
-
-function startWatching() {
-  if (unsubscribe || !adapter) return;
-  runScan();
-  unsubscribe = AdapterManager.watch(adapter, runScan);
-}
-
-function stopWatching() {
-  if (unsubscribe) {
-    unsubscribe();
-    unsubscribe = undefined;
-  }
-}
-
-function cleanup() {
-  stopWatching();
-  chrome.storage.onChanged.removeListener(handleSettingsChange);
+  runScan();                         // initial
+  unsubscribe = AdapterManager.watch(adapter, runScanThrottled); // live updates
+  window.addEventListener("beforeunload", () => unsubscribe && unsubscribe());
 }
 
 function runScan() {
@@ -86,4 +37,30 @@ function teardownOverlay() {
 }
 
 init();
+
+function throttle(fn, wait = 250){
+  let last = 0;
+  let timeout;
+  let pendingArgs;
+  const invoke = () => {
+    last = Date.now();
+    timeout = undefined;
+    fn(...(pendingArgs || []));
+    pendingArgs = undefined;
+  };
+  return (...args) => {
+    pendingArgs = args;
+    const now = Date.now();
+    const remaining = wait - (now - last);
+    if (remaining <= 0 || remaining > wait){
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = undefined;
+      }
+      invoke();
+    } else if (!timeout) {
+      timeout = setTimeout(invoke, remaining);
+    }
+  };
+}
 

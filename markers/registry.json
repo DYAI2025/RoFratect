@@ -15,6 +15,34 @@
     ["SEM_PLATFORM_SWITCH_WHATSAPP","ATO_WEBCAM_PHRASE"],
     ["SEM_PLATFORM_SWITCH_WHATSAPP","SEM_MILITARY_OFFSHORE_COVER"],
     ["SEM_INTRODUCE_AGENT_BROKER","SEM_INVESTMENT_PIVOT"]
-  ]
+  ],
+  "marker_sources": {
+    "high": [
+      "ATO_WEBCAM_PHRASE.json",
+      "SEM_INVESTMENT_PIVOT.json",
+      "SEM_PAYMENT_METHOD_REQUEST.json",
+      "SEM_PLATFORM_SWITCH_WHATSAPP.json",
+      "SEM_MT4_MT5_EXCHANGE.json",
+      "SEM_SIGNAL_GROUP_INVITE.json",
+      "SEM_USDT_WALLET_REQUEST.json",
+      "SEM_CUSTOMS_PACKAGE_FEE.json",
+      "SEM_TRAVEL_VISA_EMERGENCY.json",
+      "SEM_MILITARY_OFFSHORE_COVER.json",
+      "SEM_DISAPPEARING_MSG_WHATSAPP.json",
+      "SEM_ID_VERIFICATION_AVOIDANCE.json",
+      "ATO_LOVE_BOMBING.json",
+      "ATO_GUILT_TRIP.json",
+      "ATO_FUTURE_FAKING.json"
+    ],
+    "medium": [
+      "CLU_AGE_INCONSISTENCY.json",
+      "CLU_ALIAS_NAME_CHANGE.json",
+      "CLU_NAME_VARIATION.json",
+      "SEM_STATUS_GRANDIOSE.json",
+      "SEM_QUESTION_DEFLECTION.json",
+      "SEM_PASSIVE_INCOME_FRAME.json"
+    ],
+    "soft": []
+  }
 }
 

@@ -1,0 +1,20 @@
+{
+  "host": "web.telegram.org",
+  "row": "div.message-list-item, .Message",
+  "text": ".text-content, .message",
+  "idAttr": "data-id",
+  "time": ".message-date@data-ts",
+  "threadId": "searchOrHash",
+  "speaker": {
+    "attr": "class",
+    "attrMatch": "token",
+    "me": ["is-out", "own"],
+    "peer": ["is-in", "their"]
+  },
+  "heuristics": {
+    "minRows": 1,
+    "maxEmptyCycles": 2,
+    "minSpeakersLabeled": 1,
+    "speakerSampleSize": 2
+  }
+}

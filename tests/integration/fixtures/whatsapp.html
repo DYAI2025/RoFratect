@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WhatsApp Fixture</title>
+  <style>
+    body { font-family: sans-serif; }
+    [data-testid="msg-out"] { background: #dcf8c6; }
+  </style>
+</head>
+<body>
+  <div data-testid="conversation-panel">
+    <div role="row" data-id="wa-1" data-pre-plain-text="[12:00] You: ">
+      <div data-testid="msg-out">
+        <div data-testid="msg-container">Hey – just checking in.</div>
+      </div>
+      <time datetime="2023-06-25T12:00:00Z"></time>
+    </div>
+    <div role="row" data-id="wa-2" data-pre-plain-text="[12:05] Alex: ">
+      <div data-testid="msg-container">All good here, thanks!</div>
+      <time datetime="2023-06-25T12:05:00Z"></time>
+    </div>
+  </div>
+</body>
+</html>

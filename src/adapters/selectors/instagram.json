@@ -1,0 +1,20 @@
+{
+  "host": "instagram.com",
+  "urlPattern": "direct/\\/t/",
+  "row": "div[role=\"listitem\"]",
+  "text": ":self",
+  "mineFlag": "svg[aria-label=\"Seen\"]",
+  "idAttr": "id",
+  "threadId": "pathname",
+  "speaker": {
+    "flagSelectors": {
+      "me": "svg[aria-label=\"Seen\"]"
+    }
+  },
+  "heuristics": {
+    "minRows": 1,
+    "maxEmptyCycles": 3,
+    "minSpeakersLabeled": 1,
+    "speakerSampleSize": 2
+  }
+}
