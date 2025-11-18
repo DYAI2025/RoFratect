@@ -7,9 +7,9 @@ let engine, registry, adapter, unsubscribe;
 const runScanThrottled = throttle(() => runScan(), 350);
 
 async function init() {
-  ({ registry } = await loadRegistry());
-  const { markers } = await loadRegistry();
-  engine = new ScoringEngine({ registry, markers });
+  const payload = await loadRegistry();
+  registry = payload.registry;
+  engine = new ScoringEngine(payload);
 
   adapter = AdapterManager.choose();
   runScan();                         // initial
