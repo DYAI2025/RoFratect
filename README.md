@@ -16,3 +16,7 @@ Ordner:
 
 Hinweis: Icons sind absichtlich weggelassen, um Load-Probleme mit Platzhalterdateien zu vermeiden.
 
+## Tests
+
+- Integration-/Snapshot-Tests für Adapter: `npm run test:integration` (benötigt Chromium/puppeteer).
+
