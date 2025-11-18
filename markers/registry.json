@@ -15,6 +15,18 @@
     ["SEM_PLATFORM_SWITCH_WHATSAPP","ATO_WEBCAM_PHRASE"],
     ["SEM_PLATFORM_SWITCH_WHATSAPP","SEM_MILITARY_OFFSHORE_COVER"],
     ["SEM_INTRODUCE_AGENT_BROKER","SEM_INVESTMENT_PIVOT"]
-  ]
+  ],
+  "marker_sources": {
+    "high": [
+      "ATO_WEBCAM_PHRASE.json",
+      "SEM_INVESTMENT_PIVOT.json",
+      "SEM_PAYMENT_METHOD_REQUEST.json",
+      "SEM_PLATFORM_SWITCH_WHATSAPP.json"
+    ],
+    "medium": [
+      "CLU_AGE_INCONSISTENCY.json"
+    ],
+    "soft": []
+  }
 }
 

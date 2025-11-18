@@ -6,9 +6,9 @@ import { paintOverlay, classifyFromThresholds } from "./ui-overlay.js";
 let engine, registry, adapter, unsubscribe;
 
 async function init() {
-  ({ registry } = await loadRegistry());
-  const { markers } = await loadRegistry();
-  engine = new ScoringEngine({ registry, markers });
+  const payload = await loadRegistry();
+  registry = payload.registry;
+  engine = new ScoringEngine(payload);
 
   adapter = AdapterManager.choose();
   runScan();                         // initial
