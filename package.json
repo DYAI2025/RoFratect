@@ -6,7 +6,6 @@
   "scripts": {
     "lint": "node scripts/lint.mjs",
     "test": "node --test",
-    "build": "node scripts/build.mjs",
-    "artifact": "npm run build"
+    "build": "node scripts/build.mjs"
   }
 }
